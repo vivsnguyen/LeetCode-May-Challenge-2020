@@ -16,6 +16,8 @@ canConstruct("aa", "ab") -> false
 canConstruct("aa", "aab") -> true
 """
 
+#what is time complexity of count()? improve
+
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
         for i in list(ransomNote):
