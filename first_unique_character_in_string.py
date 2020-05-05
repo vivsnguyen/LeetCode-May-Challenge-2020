@@ -13,6 +13,20 @@ Note: You may assume the string contain only lowercase
 letters.
 """
 
+# class Solution:
+#     def firstUniqChar(self, s: str) -> int:
+#         char_dict = {}
+        
+#         for char in s:
+#             char_dict[char] = char_dict.get(char, 0) + 1
+            
+#         for char, count in char_dict.items():
+#             if count == 1:
+#                 return s.index(char)
+            
+#         return -1
+
+
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         char_dict = {}
@@ -20,8 +34,8 @@ class Solution:
         for char in s:
             char_dict[char] = char_dict.get(char, 0) + 1
             
-        for char, count in char_dict.items():
-            if count == 1:
-                return s.index(char)
+        for i, char in enumerate(s):
+            if char_dict.get(char) == 1:
+                return i
             
         return -1
