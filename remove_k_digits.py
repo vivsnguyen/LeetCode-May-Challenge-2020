@@ -25,3 +25,27 @@ Output: "0"
 Explanation: Remove all the digits from the number and it is 
 left with nothing which is 0.
 """
+# try deque
+
+class Solution(object):
+    def removeKdigits(self, num, k):
+        """
+        :type num: str
+        :type k: int
+        :rtype: str
+        """
+    
+        stack = []
+
+        for char in num:
+            while stack and k > 0 and stack[-1] > char:
+                k -= 1
+                stack.pop()
+            stack.append(char)
+
+        for i in range(k):
+            stack.pop()
+
+        num = ''.join(stack).lstrip('0')
+
+        return num or "0"
