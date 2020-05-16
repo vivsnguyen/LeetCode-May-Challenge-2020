@@ -21,3 +21,16 @@ The relative order inside both the even and odd groups
 should remain as it was in the input.
 The first node is considered odd, the second node even and so on ...
 """
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def oddEvenList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        
