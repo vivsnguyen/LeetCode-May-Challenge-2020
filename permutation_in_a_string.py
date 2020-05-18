@@ -40,3 +40,74 @@ Both strings must have same character frequencies, if one is permutation of anot
    Hide Hint #6  
 What about hash table? An array of size 26?
 """
+
+#time limit exceeded
+#can use Counter object
+# class Solution(object):
+#     def checkInclusion(self, s1, s2):
+#         """
+#         :type s1: str
+#         :type s2: str
+#         :rtype: bool
+#         """
+        
+#         """
+#         if len s2 < len s1 
+#         loop through string 1,2 and count each letter
+        
+#         """
+        
+#         s1_dict = {}
+        
+#         for char in s1:
+#             s1_dict[char] = s1_dict.get(char, 0) + 1
+            
+#         for i in range(len(s2)):
+#             substring = s2[i:i+len(s1)]
+            
+#             s2_dict = {}
+            
+#             for char in substring:
+#                 s2_dict[char] = s2_dict.get(char, 0) + 1
+        
+#             if s1_dict == s2_dict:
+#                 return True
+            
+#         return False
+
+
+#sliding window
+class Solution(object):
+    def checkInclusion(self, s1, s2):
+        """
+        :type s1: str
+        :type s2: str
+        :rtype: bool
+        """
+        
+        from collections import Counter
+        
+        s1_dict = Counter(s1)
+        k = len(s1)
+        window = s2[:k]
+        s2_dict = Counter(window)
+
+        if s1_dict == s2_dict:
+            return True
+  
+        for i in range(len(s2)-len(s1)):
+        
+            if s2_dict.get(s2[i]) == 1:
+                del s2_dict[s2[i]]
+            elif s2_dict.get(s2[i]) > 1:
+                s2_dict[s2[i]] -= 1
+            
+            if s2[i+k] in s2_dict:
+                s2_dict[s2[i+k]] += 1
+            else:
+                s2_dict[s2[i+k]] = 1
+                
+            if s1_dict == s2_dict:
+                return True
+                
+        return False
