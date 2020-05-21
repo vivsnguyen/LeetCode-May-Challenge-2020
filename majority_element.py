@@ -27,3 +27,20 @@ class Solution:
         for num in nums:
             if ele_dict.get(num) == maj:
                 return num
+
+
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n_dict = {}
+        k = len(nums)
+        
+        for i in nums:
+            n_dict[i] = n_dict.get(i,0) + 1
+            
+        for key, value in n_dict.items():
+            if value > k/2:
+                return key
