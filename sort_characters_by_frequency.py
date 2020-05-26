@@ -35,3 +35,17 @@ Explanation:
 "bbaA" is also a valid answer, but "Aabb" is incorrect.
 Note that 'A' and 'a' are treated as two different characters.
 """
+class Solution:
+    def frequencySort(self, s: str) -> str:
+        char_count = {}
+        sorted_list = []
+        
+        for char in s:
+            char_count[char] = char_count.get(char, 0) + 1
+            
+        
+        for c in sorted(char_count, key=char_count.get, reverse=True):
+            sorted_list.append(c*char_count[c])
+            
+        
+        return "".join(sorted_list)
